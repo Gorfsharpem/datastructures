@@ -1,0 +1,40 @@
+10.2 Write a program to read through the mbox-short.txt and figure out the
+#distribution by hour of the day for each of the messages.
+#You can pull the hour out from the 'From ' line by finding the time and then
+#splitting the string a second time using a colon.
+#From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008
+#Once you have accumulated the counts for each hour,
+#print out the counts, sorted by hour as shown below.
+
+fname=input("Enter the file name: ")
+fh = open(fname)
+mydict=dict()
+mylist=list()
+count=0
+
+for line in fh:
+    if  not line.startswith('From '):
+        continue
+
+    ls=line.split()
+    ls1=ls[5]
+    ls2=ls1.split(':')
+    hrs=ls2[0]
+    mylist.append(hrs)
+for word in mylist:
+    mydict[word]=mydict.get(word,0) +1
+    #print(line)
+anotherlist=list()
+for k,v in mydict.items():
+    tupp=(k,v)
+    anotherlist.append(tupp)
+    #print(tupp)
+anotherlist=sorted(anotherlist)
+for k1,v1 in anotherlist[:10]:
+
+    print(k1,v1)
+
+
+#print(mydict.items())
+#here the tuples/in terms of dictionary is ready. You need to reverse the order of keys and
+#print out the dictionary
