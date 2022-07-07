@@ -1,0 +1,28 @@
+fname=input("Enter the file name: ")
+fh = open(fname)
+count = 0
+counter=0
+mydict=dict()
+name=None
+al=0
+count1=0
+mylist=list()
+for line in fh:
+    if not line.startswith('From '):
+        continue
+    #count=count+1
+    ls=line.split('From')
+    ls0=ls[1]
+    ls1=ls0.split()
+    ls2=ls1[0]
+    ml=mylist.append(ls2)
+for b in mylist:
+    if b not in mydict:
+        mydict[b]=1
+    else:
+        mydict[b]=mydict[b]+1
+    finikey=max(mydict, key=mydict.get)
+    finivalue=max(mydict.values())
+
+print(finikey,finivalue)
+#print( max(mydict.keys()),max(mydict.values()))
