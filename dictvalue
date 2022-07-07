@@ -1,0 +1,37 @@
+#9.4 Write a program to read through the mbox-short.txt and figure
+# out who has sent the greatest number of mail messages. The program looks
+# for 'From ' lines and takes the second word of those lines as the person
+# who sent the mail. The program creates a Python dictionary that maps the sender's
+# mail address to a count of the number of times they appear in the file. After the
+# dictionary is produced, the program reads through the dictionary using a maximum loop to find
+# the most prolific committer.
+fname=input("Enter the file name: ")
+fh = open(fname)
+count = 0
+counter=0
+mydict=dict()
+name=None
+al=0
+count1=0
+for line in fh:
+    if not line.startswith('From '):
+        continue
+    #count=count+1
+    ls=line.split('From')
+    #ename=line[5:9]
+    name=ls[1].split("@")
+    name1=name[0]
+    for al in name:
+        if al not in mydict:
+
+            #mydict={}
+            count1=count1+1
+            mydict[al]=1
+        else:
+            mydict[al]=mydict[al]+1
+
+        #counter[fn]=counter.get(fn,0)+1
+
+    #print(name1, mydict.keys(), mydict.values())
+print(ls,name[0], count1)
+    #print(mydict ,count)
