@@ -1,0 +1,16 @@
+fname=input("Enter the file name: ")
+fh = open(fname)
+mydict=dict()
+for line in fh:
+    words=line.split()
+    for word in words:
+        mydict[word]=mydict.get(word,0) +1
+
+mylist=list()
+for k,v in mydict.items():
+    tup=(v,k)
+    mylist.append(tup)
+mylist=sorted(mylist,reverse=True)
+
+for value,key in mylist[:10]:
+    print(key,value)
